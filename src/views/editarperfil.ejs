@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Editar Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/js/EDITARPEFILapp.js"></script> 
+</head>
+
+<body>
+    
+    <%- include('incs/header') %>
+        
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-4" style="margin-top: 50px;">
+                <div class="text-center">
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                        alt="avatar">
+                    <h6>Elegir otra foto...</h6>
+                    <input type="file" class="text-center center-block file-upload">
+                </div>
+                </hr><br>
+
+               
+                
+            </div>
+
+            <div class="col-sm-8" style="margin-top: 50px;">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Perfil</a></li>
+                </ul>
+
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <hr>
+                        <form class="form" action="##" method="post" id="myform">
+                           
+                                
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="teléfono">
+                                        <h4>Teléfono / Celular</h4>
+                                    </label>
+                                    <input type="text" class="form-control" name="teléfono" id="teléfono"
+                                        placeholder="teléfono">
+                                </div>
+                            </div>
+
+                        
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="email">
+                                        <h4>Email Alternativo</h4>
+                                    </label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="you@email.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="localidad">
+                                        <h4>Localidad</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="localidad" placeholder="localidad" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="provincia">
+                                        <h4>Provincia</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="provincia" placeholder="provincia" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="password">
+                                        <h4>Contraseña</h4>
+                                    </label>
+                                    <input type="password" class="form-control" name="password" id="password" 
+                                    placeholder="Contraseña" pattern="(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*"
+                                    title="Debe tener al menos una mayúscula, una minúscula y un numero"
+                                    required>
+                             
+                                 </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="password2">
+                                        <h4>Verifica la contraseña</h4>
+                                    </label>
+                                    <input type="password" class="form-control" name="password2" id="password2"
+                                        placeholder="Contraseña" required>
+                                </div>
+                            </div>
+                            <div id="resultado"></div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="btn btn-success" type="submit" onclick="validarContraseña()"><i
+                                            class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
+                                    <button class="btn btn-danger" type="reset"><i
+                                            class="glyphicon glyphicon-repeat"></i> Limpiar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <hr>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+</body>
+
+    </html>

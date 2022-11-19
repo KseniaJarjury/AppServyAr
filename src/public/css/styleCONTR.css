@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  #logo{
+    width: 13%;
+    height: 13%;
+  }
+   
+  body{
+    background: #f1f1f1;
+  }
+   
+  .container{
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+   
+  .contrato-container{
+    display: flex;
+    width: 1000px;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
+  }
+   
+   
+  .contrato{
+    background-image: linear-gradient(to bottom right, rgb(250, 57, 57), #f74a4a);
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    flex: 1;
+  }
+   
+  .contrato h2{
+    color: #fff;
+    margin-bottom: 45px;
+  }
+   
+  .contrato button i{
+    position: absolute;
+    top: 12px; 
+    left: 12px;
+  }
+   
+  .contrato button{
+    width: 100%;
+    margin: 15px 0px;
+    padding: 10px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .contrato input{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #a8a8a8;
+    color: #333;
+  }
+   
+/* BOTONES CONTRATO */
+  .contrato .submit{
+    width: auto;
+    padding: 10px;
+    background: #E8631C;
+    color: #fff;
+    font-size: 12px;
+    border-color: #E8631C;
+    /* box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2); */
+    cursor: pointer;
+  }
+
+
+  /* BOTON DEL MODAL */
+  .btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: #E8631C !important;
+    border-color: #E8631C;
+}
+
+.btn-primary:hover {
+    background-color: #E8631C !important;
+    border-color: #E8631C;
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+}
+
+/* CSS DEL MODAL */
+  #form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+    
+  }
+  
+  #form p {
+    text-align: center;
+    
+  }
+  
+  #form label {
+    font-size: 20px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    color: grey;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+    
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+   
+  @media only screen and (max-width: 540px){
+    .contrato-container{
+      display: block;
+    }
+   
+    .register, .contrato{
+      flex: none;
+    }
+   
+    .register::after{
+      top: unset;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+  }

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('incs/head') %>
+    <title>ServyAr</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/app.js" defer></script>
+</head>
+<body>
+    <header class="header" id="inicio">
+      <div class="sign-out">
+        <a href="/" onclick="signOut();"><img src="/images/img-svg/bx-exit.svg" alt="">Cerrar Sesion</a>
+      </div>
+      <img src="/images/img-svg/bx-menu.svg" alt="" class="principal">
+      <%- include('incs/header') %>
+      <nav class="menu-navegacion ">
+        <a href="#inicio">Inicio</a>
+        <a href="/login">Iniciar Sesión</a>
+        <a href="#categoria">Servicios</a>
+        <a href="#testimonios">Clientes</a>
+        <a href="#contacto">contacto</a>
+      </nav>
+      <div class="contenedor head">
+        <h1 class="titulo">Encontra el servicio que necesitas</h1>
+        <p class="copy">Te ayudamos a contratar gente de confianza</p>
+      </div>
+    </header>
+    <main>
+      <section class="services contenedor" id="servicio">
+        <h3 class="subtitulo">Conoce nuestros servicios</h3>
+        <div class="contenedor-servicio">
+          <img src="/images/img-svg/seleccion.svg" alt="" class="nuestroServicio">
+        </div>
+      </section>
+      <section class="gallery" id="categoria">
+        <h3 class="subtitulo">Categorias:</h3>
+        <section class="category">
+          <div class="cont-category">
+
+
+            <% for (let categoria of categorias) { %>
+              <div class="contenedor-categoria">
+                <div class="cont-galeria">
+                  <!-- <img src="<%- categoria.image %>" alt="" class="img-categoria"> -->
+                </div> 
+                <h6 class="n-service"><a href="/categorias/<%- categoria.Id_servicio %>"><%- categoria.Tipo%></a></h6>
+              </div>
+            <% } %>
+
+          </section>
+          <section class="imagen-light">
+            <img src="/images/img-svg/bx-x.svg" alt="" class="close">
+            <div style="position: relative; left: 0; top: 0;">
+              <img src="/images/img-app/logo.png" alt="" class="agregar-imagen">
+            </div>
+          </div>
+        </section>
+      </section>
+      <br>
+      <br>
+      <section class="testimonios" id="testimonios">
+        <div class="cabecera">
+          <h2 class="subtitulo">Lo que cuentan los clientes de ServiAr</h2>
+          <p class="p-test">Más de <span>1.150 </span> trabajos completados con una media de los profesionales de <span >4.7</span> sobre <span>5</span>  ⭐⭐⭐⭐⭐️</p> <br>
+        </div>
+        <section class="opinion">
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/images/img-cliente/Nicolas-sanchez.jpg" class="img-carrusel" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4 class="sub-nombre">Nicolas Sanchez</h4>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <p class="p-opinion">Opinión sobre profesional Pablo E.</p>
+                  <p class="p-opinion">Muy prolijo y cuidadoso. Super puntual, quede muy conforme. Lo recomiendo!!</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-cliente/manuel-romero.jpg" class="img-carrusel" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4 class="sub-nombre">Manuel Romero</h4>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <p class="p-opinion">Opinión en Google Play</p>
+                  <p class="p-opinion"> Me encantó la aplicación la cantidad de profesionales a los que puedo acceder. Se lucieron con esta idea. Y como me gustó tanto, les ayudaré difundiendo su aplicación en las redes sociales. De verdad gracias por esta aplicación espero reciban muchos usuarios.
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-cliente/lucia-esperanza.jpg" class="img-carrusel" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4 class="sub-nombre">Lucia Esperanza</h4>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <p class="p-opinion">Opinión en Google Play</p>
+                  <p class="p-opinion">Permite conectar personas con necesidades de arreglos caseros con expertos que saben de lo que uno no sabe... Encontré el servicio rápido y chatee con 4 profesionales que me ofrecieron sus servicios... Es muy sencilla de manejar.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-cliente/christian-buehner.jpg" class="img-carrusel" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4 class="sub-nombre">Christian Buehner</h4>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <p class="p-opinion">Opinión sobre profesional M. Medina</p>
+                  <p class="p-opinion">
+                    Muy eficiente, soluciono el problema y aparte me dio un presupuesto razonable. Gracias
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-cliente/Camila-Baston.jpg" class="img-carrusel" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4 class="sub-nombre">Camila Baston</h4>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <p class="p-opinion">Opinión sobre profesional Diego A.</p>
+                  <p class="p-opinion">
+                    Mi primera experiencia en la app excelente. Diego fue expedito y realizo un excelente trabajo, muy conforme!Espero realizar otros trabajos con el, gracias. 
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-cliente/camilo-acosta.jpg" class="img-carrusel" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4 class="sub-nombre">Camilo Acosta</h4>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <p class="p-opinion">Opinión en Google Play</p>
+                  <p class="p-opinion">
+                    Me gusta mucho la app. Me ha salvado en varias ocasiones y con diferentes temas. Encuentro todo tipo de servicios profesionales en ella. 
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <img src="/images/img-svg/bx-previos.svg" alt="">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <img src="/images/img-svg/bx-next.svg" alt="">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <img src="/images/img-svg/bx-next.svg" alt="">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <img src="/images/img-svg/bx-next.svg" alt="">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <img src="/images/img-svg/bx-next.svg" alt="">
+            </button>
+          </div>
+        </section>
+      </section>
+      <br>
+      <br>
+    </main>
+    <footer id="contacto">
+      <%- include('incs/footer') %>
+    </footer>
+</body>
+</html>

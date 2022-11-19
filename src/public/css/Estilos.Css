@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.imgRedonda {
+    width: 160px;
+    height: 160px;
+    border-radius: 160px;
+    border: 5px solid #666;
+    float: left;
+}
+
+
+#col__formulario {
+    align-content: center;
+}
+
+#descripcion__textarea{
+    resize:none
+}
+
+
+
+
+
+/*
+p {
+    float: left;
+    //para que los elementos se pongan al lado del otro
+    overflow: hidden;
+    display: block; //nos permite tener un padding abajo y arriba
+}    */

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('incs/head') %>
+    <title>Detalle de Contratacion</title>
+
+    <!--Propios-->
+    <script src="/-Proyecto-Integrador-Programacion-Web/Javascript/appFormContrato.js" defer></script>
+    <link rel="stylesheet" href="/css/Estilos.Css">
+
+    <!--Bootstrap-->
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <%- include('incs/header') %>
+        
+    <div class="container">
+        <div class="row  justify-content-center m-4">
+            <div class=" col-xs-6 col-sm-8 col-sm-10 col-lg-12 " id="col__formulario">
+                <form id="formulario">
+
+                    <!--Header-->
+                    <div class="card card-header bg-danger bg-gradient" id="grupo__encabezado">
+                        <h4 class="card-title">Detalle de Contracción</h4>
+                    </div>
+
+                    <!--Body-->
+                    <div class="card card-body">
+
+                        <!--Sub-titulo-->
+                        <div class="mb-3" id="grupo__sub-titulo">
+                            <h5 class="card-subtitle text-muted">Datos Oferente:</h5>
+                        </div>
+
+                        <!--Nombre Completo-->
+                        <div class="mb-3" id="grupo__nombre">
+                            <label class="form-label" for="nombre-completo" id="nombre__completo-label">Nombre
+                                Completo:</label>
+                            <input class="form-control" type="text" name="nombre-completo" id="nombre__completo-input"
+                                placeholder="Por defecto">
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+
+                                <!--Nro Celular-->
+                                <div class="mb-3" id="grupo__celular">
+                                    <label class="form-label " for="numero-celular" id="celeluar__label">Nº
+                                        Celular:</label>
+                                    <input class="form-control" type="number" name="numero-celular" id="celular__input"
+                                        placeholder="Por defecto">
+                                </div>
+                            </div>
+
+                            <div class="col">
+
+                                <!--Nro Telefono-->
+                                <div class="mb-3" id="grupo__telefono">
+                                    <label class="form-label" for="telefono" id="telefono__label">Nº Tel:</label>
+                                    <input class="form-control" type="number" name="telefono" id="telefono__input"
+                                        placeholder="Por defecto">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Sub-titulo-->
+                        <div class="mb-3" id="grupo__sub-titulo">
+                            <h5 class="card-subtitle text-muted">Datos Cliente:</h5>
+                        </div>
+
+                        <!--Nombre Completo-->
+                        <div class="mb-3" id="grupo__nombre">
+                            <label class="form-label" for="nombre-completo" id="nombre__completo-label">Nombre
+                                Completo:</label>
+                            <input class="form-control" type="text" name="nombre-completo" id="nombre__completo-input">
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+
+                                <!--Direccion (?)-->
+                                <div class="mb-3" id="grupo__direccion">
+                                    <label class="form-label" for="direccion" id="direccion__label">Direccion:</label>
+                                    <input class="form-control" type="text" name="direccion" id="direccion__input">
+                                </div>
+                            </div>
+                            <div class="col">
+
+                                <!--Nro-de-calle (?)-->
+                                <div class="mb-3" id="grupo__numero">
+                                    <label class="form-label" for="numero" id="nro__label">Nro:</label>
+                                    <input class="form-control" type="number" name="numero" id="numero__input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+
+                                <!--Provincia-->
+                                <div class="mb-3" id="grupo__provincia">
+                                    <label class="form-label" for="provincia" id="provincia__label">Provincia:</label>
+                                    <input class="form-control" type="text" name="provincia" id="provincia__input">
+                                </div>
+                            </div>
+                            <div class="col">
+
+                                <!--Localidad-->
+                                <div class="mb-3" id="grupo__localidad">
+                                    <label class="form-label" for="localidad" id="grupo__localidad">Localidad:</label>
+                                    <input class="form-control" type="text" name="localidad" id="localidad__input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+
+                                <!--Nro Celular-->
+                                <div class="mb-3" id="grupo__celular">
+                                    <label class="form-label" for="numero-celular" id="celeluar__label">Nº
+                                        Celular:</label>
+                                    <input class="form-control" type="number" name="numero-celular" id="celular__input">
+                                </div>
+                            </div>
+
+                            <div class="col">
+
+                                <!--Nro Telefono-->
+                                <div class="mb-3" id="grupo__telefono">
+                                    <label class="form-label" for="telefono" id="telefono__label">Nº Tel:</label>
+                                    <input class="form-control" type="number" name="telefono" id="telefono__input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Sub-titulo-->
+                        <div class="mb-3" id="grupo__sub-titulo">
+                            <h5 class="card-subtitle text-muted">Detalles:</h5>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+
+                                <!--Fecha-Inicio-->
+                                <div class="mb-3" id="grupo__fecha-inicio">
+                                    <label class="form-label" for="fecha-inicio" id="fecha__inicio-label:">Fecha
+                                        Inicio:</label>
+                                    <input class="form-control" type="date" inputmode="fecha__inicio-input">
+                                </div>
+                            </div>
+                            <div class="col">
+
+                                <!--Fecha-Fin-->
+                                <div class="mb-3" id="grupo__fecha-fin">
+                                    <label class="form-label" for="fecha-fin" id="fecha__fin-label:">Fecha
+                                        Inicio:</label>
+                                    <input class="form-control" type="date" inputmode="fecha__fin-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Cotizacion-->
+                        <div class="input-group mb-3" id="grupo__cotizacion">
+                            <span class="input-group-text" id="basic-addon1">$</span>
+                            <input type="number" class="form-control" id="cotizacion__input placeholder=" Cotizacion"
+                                aria-label="Username" aria-describedby="basic-addon1" placeholder="Monto">
+                        </div>
+
+                        <div class="mb-3" id="grupo__descripcion">
+                            <label class="form-label" for="descripcion" id="descripcion__label">Descripción del
+                                Trabajo:</label>
+                            <textarea class="form-control" name="descripcion" id="descripcion__textarea" cols="10"
+                                rows="3"></textarea>
+                        </div>
+
+                    </div>
+
+                    <!--Footer-->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card card-footer">
+                                <div class="mb-3" id="grupo_boton">
+                                    <button class="btn btn-primary my-3" id="boton">Enviar Detalle</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<!--Email
+<div class="mb-3" id="grupo__email">
+    <label class="form-label" for="email" id="emial__label">Email:</label>
+    <input class="form-control" type="text" name="email" id="email__input" placeholder="Por defecto">
+</div>-->
