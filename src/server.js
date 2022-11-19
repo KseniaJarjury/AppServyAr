@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -52,6 +52,6 @@ app.use('/contratooferente', require('./routes/contratooferente'));
 app.use('/formcontratacion', require('./routes/formcontratacion'));
 app.use('/perfiloferente', require('./routes/perfiloferente'));
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 });
