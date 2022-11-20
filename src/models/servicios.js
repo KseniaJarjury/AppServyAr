@@ -12,7 +12,7 @@ class Servicio {
     }
 
     static async getAll() {
-        let queryStr = 'SELECT * FROM `servicio`';
+        let queryStr = 'SELECT * FROM `Servicio`';
         let rows, fields;
         [rows, fields] = await connection.query(
             queryStr,
@@ -22,7 +22,7 @@ class Servicio {
     }
 
     static async find(id) {
-        let queryStr = 'SELECT * FROM `servicio` WHERE `Id_servicio` = ?';
+        let queryStr = 'SELECT * FROM `Servicio` WHERE `Id_servicio` = ?';
         let rows, fields;
         [rows, fields] = await connection.query(
             queryStr,
@@ -38,7 +38,7 @@ class Servicio {
         if (this.Id_servicio == 0) {
             return false;
         } else {
-            let queryStr = 'DELETE FROM `servicio` WHERE `Id_servicio` = ?';
+            let queryStr = 'DELETE FROM `Servicio` WHERE `Id_servicio` = ?';
             let result, fields;
             [result, fields] = await connection.query(
                 queryStr,
@@ -55,7 +55,7 @@ class Servicio {
         if (this.Id_servicio == undefined || this.Id_servicio == 0) {
             return this.create();
         } else {
-            let queryStr = 'UPDATE `servicio` SET `Tipo` = ? WHERE `Id_servicio` = ?';
+            let queryStr = 'UPDATE `Servicio` SET `Tipo` = ? WHERE `Id_servicio` = ?';
             let result, fields;
             [result, fields] = await connection.query(
                 queryStr,
@@ -67,7 +67,7 @@ class Servicio {
     }
 
     async create() {
-        let queryStr = 'INSERT INTO `servicio` (`Tipo`) VALUES (?,?)';
+        let queryStr = 'INSERT INTO `Servicio` (`Tipo`) VALUES (?,?)';
         let result, fields;
         [result, fields] = await connection.query(
             queryStr,

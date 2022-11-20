@@ -165,7 +165,7 @@ insert into Cliente(Id_usuario_client) values
 
 insert into Servicio(Tipo) values
 		('Abogado/a'),
-		('Alba�il'),
+		('Albañil'),
 		('Arquitecto/a'),
 		('Belleza'),
 		('Bienestar'),

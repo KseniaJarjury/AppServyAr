@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/server.js",
   "engines": {
-    "node": "19.0.1."
+    "node": "18.12.1.",
+    "npm": "8.19.2"
   },
   "scripts": {
     "start": "nodemon --exec babel-node src/server.js",
@@ -14,6 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/KseniaJarjury/AppServyAr.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -31,6 +33,7 @@
     "express-session": "^1.17.3",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "passport": "^0.6.0",
     "passport-google-oauth2": "^0.2.0"
   },
   "devDependencies": {
