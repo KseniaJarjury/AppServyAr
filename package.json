@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
+  "engines": {
+    "node": "19.0.1."
+  },
   "scripts": {
-    "start": "node src/server.js",
+    "start": "nodemon --exec babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
