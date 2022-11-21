@@ -24,7 +24,6 @@ router.get('/categorias/:idServicio', async (req, res) => {
 
 
 router.get('/guest', authGuestMiddleware, (req, res) => {
-    res.render('guest');
 });
 
 router.get('/home', authMiddleware, async (req, res) => {
