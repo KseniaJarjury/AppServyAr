@@ -12,4 +12,5 @@ const connectionSync = mysql.createConnection({
 
 const connectionAsync = connectionSync.promise();
 
+
 module.exports = connectionAsync;

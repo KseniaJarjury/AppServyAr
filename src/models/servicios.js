@@ -3,12 +3,12 @@ const connection = require('../config/db')
 
 class Servicio {
     constructor(data) {
-        this.Id_servicio_servicio = data.Id_servicio;
+        this.id_servicio_servicio = data.id_servicio;
         this.fill(data);
     }
 
     fill(data) {
-        this.Tipo = data?.Tipo;
+        this.tipo = data?.tipo;
     }
 
     static async getAll() {
@@ -22,7 +22,7 @@ class Servicio {
     }
 
     static async find(id) {
-        let queryStr = 'SELECT * FROM `servicio` WHERE `Id_servicio` = ?';
+        let queryStr = 'SELECT * FROM `servicio` WHERE `id_servicio` = ?';
         let rows, fields;
         [rows, fields] = await connection.query(
             queryStr,
@@ -38,11 +38,11 @@ class Servicio {
         if (this.Id_servicio == 0) {
             return false;
         } else {
-            let queryStr = 'DELETE FROM `servicio` WHERE `Id_servicio` = ?';
+            let queryStr = 'DELETE FROM `servicio` WHERE `id_servicio` = ?';
             let result, fields;
             [result, fields] = await connection.query(
                 queryStr,
-                [this.Id_servicio],
+                [this.id_servicio],
             );
             if (result.affectedRows > 0) {
                 return true;
@@ -52,28 +52,28 @@ class Servicio {
     }
 
     async save() {
-        if (this.Id_servicio == undefined || this.Id_servicio == 0) {
+        if (this.id_servicio == undefined || this.id_servicio == 0) {
             return this.create();
         } else {
-            let queryStr = 'UPDATE `servicio` SET `Tipo` = ? WHERE `Id_servicio` = ?';
+            let queryStr = 'UPDATE `servicio` SET `tipo` = ? WHERE `id_servicio` = ?';
             let result, fields;
             [result, fields] = await connection.query(
                 queryStr,
-                [this.Tipo, this.Id_servicio],
+                [this.tipo, this.id_servicio],
             );
-            this.Id_servicio = result.insertId;
+            this.id_servicio = result.insertId;
             return this;
         }
     }
 
     async create() {
-        let queryStr = 'INSERT INTO `servicio` (`Tipo`) VALUES (?,?)';
+        let queryStr = 'INSERT INTO `servicio` (`tipo`) VALUES (?,?)';
         let result, fields;
         [result, fields] = await connection.query(
             queryStr,
-            [this.Tipo],
+            [this.tipo],
         );
-        this.Id_servicio = result.insertId;
+        this.id_servicio = result.insertId;
         return this;
     }
 

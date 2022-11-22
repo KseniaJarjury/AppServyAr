@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { authGuestMiddleware, authMiddleware } = require('../middlewares/auth');
+// const { authGuestMiddleware, authMiddleware } = require('../middlewares/auth');
 
 const modelServicio = require('../models/servicios');
 
@@ -21,13 +21,4 @@ router.get('/categorias/:idServicio', async (req, res) => {
 });
 
 
-
-
-router.get('/guest', authGuestMiddleware, (req, res) => {
-    res.render('guest');
-});
-
-router.get('/home', authMiddleware, async (req, res) => {
-    res.render('home');
-});
 module.exports = router;
