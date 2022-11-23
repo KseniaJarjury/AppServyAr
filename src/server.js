@@ -1,14 +1,26 @@
 const express = require('express');
+const cool = require('cool-ascii-faces');
 const path = require('path');
-const ejs = require('ejs');
-const app = express();
-const port = process.env.PORT || 3000;
+const passport = require('passport');
+const PORT = process.env.PORT || 3000;
 
 const dotenv = require('dotenv');
 dotenv.config();
 
-const db = require('./config/db');
 
+// Intializations
+const app = express();
+const db = require('./config/db');
+app.get('/cool', (req, res) => res.send(cool()));
+app.get('/times', (req, res) => res.send(showTimes()));
+showTimes = () => {
+  let result = '';
+  const times = process.env.TIMES || 5;
+  for (i = 0; i < times; i++) {
+    result += i + ' ';
+  }
+  return result;
+}
 
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -30,21 +42,23 @@ app.set('view engine', 'ejs');
 
 let flash = require('connect-flash');
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 const { flashMiddleware, flashHelpersMiddleware } = require('./middlewares/flash');
 app.use(flashMiddleware);
 app.use(flashHelpersMiddleware);
 
 // public files
 app.use(express.static(path.join(__dirname, './public')));
-
 const { authUserMiddleware } = require('./middlewares/auth');
 app.use(authUserMiddleware);
 
 // routes
-
 app.use('/', require('./routes/index'));
-app.use('/registro', require('./routes/registro'));
-app.use('/cliente', require('./routes/cliente'));
+app.use('/', require('./routes/auth'));
+// app.use('/', require('./routes/authentication'));
+app.use('/', require('./routes/registro'));
+app.use('/', require('./routes/cliente'));
 app.use('/contrato', require('./routes/contrato'));
 app.use('/rol', require('./routes/rol'));
 app.use('/oferente', require('./routes/oferente'));
@@ -53,6 +67,9 @@ app.use('/contratooferente', require('./routes/contratooferente'));
 app.use('/formcontratacion', require('./routes/formcontratacion'));
 app.use('/perfiloferente', require('./routes/perfiloferente'));
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 });
+
+
+  

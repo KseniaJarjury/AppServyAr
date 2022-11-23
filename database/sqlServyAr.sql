@@ -1,12 +1,10 @@
 
-
 create table usuario(
 	id_usuario int not null auto_increment,
 	primary key (id_usuario) ,
-	nombre_usuario varchar(100) not null,
-	pass_usuario varchar(100) not null,
+	usuario varchar(100) not null,
+	password varchar(100) not null,
 	email varchar(100) not null,
-	email_alt varchar(100) ,
 	tel varchar(20) not null,
 	ruta_foto varchar(500) not null,
 	dni bigint not null,
@@ -25,7 +23,7 @@ create table denuncia(
     id_denunciante int not null,
 	foreign key (id_denunciante)  references usuario(id_usuario),
     id_denunciado int not null,
-	foreign key (id_denunciado) references Usuario(id_usuario),
+	foreign key (id_denunciado) references usuario(id_usuario),
 	descripcion varchar(500) not null
 );
 
@@ -48,7 +46,7 @@ create table oferente(
 	id_oferente int not null auto_increment primary key,
 	id_usuario_ofer int not null ,
     foreign key(id_usuario_ofer)  references usuario(id_usuario),
-	Tel_alter varchar(15) not  null
+	tel_alter varchar(15) not  null
 );
 
 
@@ -70,7 +68,7 @@ create table servicio(
 
 create table oferente_servicio(
 	id_oferente_o_s int not null ,
-    foreign key (Id_oferente_o_s) references oferente(id_oferente),
+    foreign key (id_oferente_o_s) references oferente(id_oferente),
 	id_servicio_o_s int not null ,
     foreign key (id_servicio_o_s) references servicio(id_servicio),
 	primary key(id_oferente_o_s, id_servicio_o_s)
@@ -81,7 +79,7 @@ create table oferente_servicio(
 create table catalogo_cabecera(
 	id_cabecera int not null auto_increment primary key,
 	id_oferente_cat int not null ,
-    foreign key (id_oferente_cat) references oferente(Id_oferente),
+    foreign key (id_oferente_cat) references oferente(id_oferente),
 	fecha_apertura date not null
 );
 
@@ -92,7 +90,7 @@ create table catalogo_detalle(
 	id_cabecera_det int not null ,
     foreign key (id_cabecera_det) references catalogo_cabecera(id_cabecera),
 	id_tipo_serv int not null,
-	foreign key (id_tipo_serv) references  servicio(id_servicio),
+	foreign key (id_tipo_serv) references servicio(id_servicio),
 	descripcion varchar(800) not null,
 	ruta_foto1 varchar(100),
 	ruta_foto2 varchar(100),
@@ -111,7 +109,7 @@ create table propuesta(
     foreign key (id_cliente_p) references cliente(id_cliente),
 	fecha_inicio date not null,
 	fecha_fin date not null,
-	monto_a_abonar double not null,
+	monto_a_abonar double not null
 );
 
 
@@ -124,26 +122,27 @@ create table estado(
 
 
 create table propuesta_estado(
-	id_propuesta_p_e int not null ,
-    foreign key (id_propuesta_p_e) references propuesta(id_propuesta),
+	idPropuestaE int not null ,
+    foreign key (idPropuestaE) references propuesta(id_propuesta),
 	id_estado_p_e int not null ,
-    foreign key (id_estado_p_e) references estado(id_estado),
+    foreign key (idPropuestaE) references estado(id_estado),
 	fecha date not null,
-	primary key(id_propuesta_p_E, id_estado_p_e)
+	primary key(idPropuestaE, id_estado_p_e)
 );
 
 
 /**DML**/
 
-insert into usuario(nombre_usuario, pass_usuario, 
-					email, email_alt, tel, ruta_foto, dni, apellido, nombre, calle, numeral_calle, cp, provincia) 
+insert into usuario(usuario, password, 
+					email, tel, ruta_foto, dni, apellido, nombre, calle, numeral_calle, cp, provincia) 
 					values
-					('user@1', 'admin1234', 'usuario1@gmail.com', 'usuario2@gmail.com' '4245-6589', 'C:TPLAB2022FOTOSuser1.jpg', 10010010, 'Perez', 'Juan', 'LNAlem', 2560, 1890, 'Buenos Aires'),
 					('user@1', 'admin1234', 'usuario1@gmail.com', '4245-6589', 'C:TPLAB2022FOTOSuser1.jpg', 10010010, 'Perez', 'Juan', 'LNAlem', 2560, 1890, 'Buenos Aires'),
-					('user@1', 'admin1234', 'usuario1@gmail.com', '4245-6589', 'C:TPLAB2022FOTOSuser1.jpg', 10010010, 'Perez', 'Juan', 'LNAlem', 2560, 1890, 'Buenos Aires'),
-					('user@2', 'admin5689', 'usuario2@gmail.com', '4780-0089', 'C:TPLAB2022FOTOSuser2.jpg', 20020002, 'Martinez', 'Jos�', 'Azcuenaga', 1002, 1550, 'Caba'),
-					('user@3', 'admin1001', 'usuario3@gmail.com', '4444-4444', 'C:TPLAB2022FOTOSuser3.jpg', 30000030, 'Marx', 'Carlos', 'Talcahuano', 102, 18000, 'Caba'),
-					
+					('user@2', 'admin1234', 'usuario2@gmail.com', '4780-0089', 'C:TPLAB2022FOTOSuser2.jpg', 20020002, 'Martinez', 'Jose', 'Azcuenaga', 1002, 1550, 'Caba'),
+					('user@3', 'admin1234', 'usuario3@gmail.com', '4444-4444', 'C:TPLAB2022FOTOSuser3.jpg', 30000030, 'Marx', 'Carlos', 'Talcahuano', 102, 18000, 'Caba'),
+					('user@4', 'admin1234', 'usuario6@gmail.com', '4222-0002', 'C:TPLAB2022FOTOSuser6.jpg', 70004007 , 'Simpson', 'Homero Jimeno', 'Av SiermpreViva', 1, 5620, 'Springfield'),
+					('user@5', 'admin1234', 'usuario3@gmail.com', '4444-4444', 'C:TPLAB2022FOTOSuser3.jpg', 30000030, 'Marx', 'Carlos', 'Talcahuano', 102, 18000, 'Caba'),
+					('user@6', 'admin1234', 'usuario6@gmail.com', '4222-0002', 'C:TPLAB2022FOTOSuser6.jpg', 70004007 , 'Simpson', 'Homero Jimeno', 'Av SiermpreViva', 1, 5620, 'Springfield');
+
 
 
 insert into oferente(id_usuario_ofer, tel_alter) values
@@ -160,7 +159,7 @@ insert into cliente(id_usuario_client) values
 
 
 
-insert into servicio(Tipo) values
+insert into servicio(tipo) values
 		('Abogado/a'),
 		('Albañil'),
 		('Arquitecto/a'),
@@ -173,7 +172,7 @@ insert into servicio(Tipo) values
 
 
 
-insert into estado(Tipo) values
+insert into estado(tipo) values
 		('Aceptado'),
 		('Rechazado'),
 		('Cancelado');
@@ -188,18 +187,18 @@ insert into catalogo_cabecera(id_oferente_cat, fecha_apertura) values
 
 
 insert into catalogo_detalle(id_cabecera_det, id_tipo_serv, descripcion ) values
-			(1, 1, 'Soy el abogado mas bueno de todos, contratame!!!!!!'),
+			(1, 1, 'Soy el abogado mas bueno, contratame!!!!!!'),
 			(2, 3, 'Soy el mejor arquitecto de la galaxia y contratame!!!');
 
 
 
-insert into propuesta(id_oferente_p, id_cliente_p, fecha_inicio, fecha_fin, monto_a_abonar, puntaje) values
-					 (1, 1, '2022-05-12', '2022-07-07', 16456, 0),
-					 (2, 1, '2022-05-12', '2022-06-30', 15000, 0),
-					 (3, 2, '2022-08-08', '2023-01-19', 150000, 0);
+insert into propuesta(id_oferente_p, id_cliente_p, fecha_inicio, fecha_fin, monto_a_abonar) values
+					 (1, 1, '2022-05-12', '2022-07-07', 16456),
+					 (2, 1, '2022-05-12', '2022-06-30', 15000),
+					 (3, 2, '2022-08-08', '2023-01-19', 150000);
 
 
 
-insert into propuesta_estado(id_propuesta_p_e, id_estado_p_e, Fecha) values
+insert into propuesta_estado(idPropuestaE, id_estado_p_e, fecha) values
 					  (1, 2, '2022-11-11'),
 					  (2, 1, '2022-11-13');
