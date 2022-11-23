@@ -20,7 +20,7 @@ header{
     position: absolute;
 }
 .img-perfil{
-    width: 25%;
+    width: 20%;
     height: 30%;
     border-radius: 50%;
     border: 3px solid rgb(255, 5, 5);
@@ -32,6 +32,9 @@ header{
     flex-wrap: wrap;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+.portada-header img{
+    width: 10%;
 }
 
 .oferente{
