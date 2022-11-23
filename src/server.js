@@ -59,13 +59,13 @@ app.use('/', require('./routes/auth'));
 // app.use('/', require('./routes/authentication'));
 app.use('/', require('./routes/registro'));
 app.use('/', require('./routes/cliente'));
-app.use('/contrato', require('./routes/contrato'));
-app.use('/rol', require('./routes/rol'));
-app.use('/oferente', require('./routes/oferente'));
-app.use('/editarperfil', require('./routes/editarperfil'));
-app.use('/contratooferente', require('./routes/contratooferente'));
-app.use('/formcontratacion', require('./routes/formcontratacion'));
-app.use('/perfiloferente', require('./routes/perfiloferente'));
+app.use('/', require('./routes/contrato'));
+app.use('/', require('./routes/rol'));
+app.use('/', require('./routes/oferente'));
+app.use('/', require('./routes/editarperfil'));
+app.use('/', require('./routes/contratooferente'));
+app.use('/', require('./routes/formcontratacion'));
+app.use('/', require('./routes/perfiloferente'));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
