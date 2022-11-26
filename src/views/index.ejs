@@ -8,14 +8,19 @@
 </head>
 <body>
     <header class="header" id="inicio">
+      <% if(user != null) {%>
       <div class="sign-out">
-        <a href="/" onclick="signOut();"><img src="/images/img-svg/bx-exit.svg" alt="">Cerrar Sesion</a>
+        <a href="/logout"><img src="/images/img-svg/bx-exit.svg" alt="">Cerrar Sesion</a>
+        <label><% user.usuario %></label>
       </div>
+      <%}%>
       <img src="/images/img-svg/bx-menu.svg" alt="" class="principal">
       <%- include('incs/header') %>
       <nav class="menu-navegacion ">
         <a href="#inicio">Inicio</a>
+        <% if(user == null) {%>
         <a href="/login">Iniciar Sesión</a>
+        <%}%>
         <a href="#categoria">Servicios</a>
         <a href="#testimonios">Clientes</a>
         <a href="#contacto">contacto</a>

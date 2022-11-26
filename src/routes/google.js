@@ -1,6 +1,8 @@
 const passport = require ('passport');
 const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const dotenv = require('dotenv');
+const express = require('express')
+const router = express.Router();
 dotenv.config();
 
 passport.use(new GoogleStrategy({
@@ -19,4 +21,11 @@ passport.serializeUser(function(user,done){
 });
 passport.deserializeUser(function(user,done){
     done(null,user);
+});
+
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account' }));
+
+router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
+    // Successful authentication, redirect success.
+    res.redirect('/');
 });

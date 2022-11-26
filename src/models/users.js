@@ -13,18 +13,20 @@ class User {
 
     fill(data) {
         this.email = data?.email;
-        this.password = data?.password;
+        this.password = hashPassword(data?.password);
+        this.usuario = data?.usuario;
+        this.id = data?.id;
     }
 
     static async checkLogin(data) {
-        let email = data.email;
+        let usuario = data.usuario;
         let password = data.password;
-        if (email && password) {
-            let queryStr = 'SELECT * FROM `users` WHERE `email` = ?';
+        if (usuario && password) {
+            let queryStr = 'SELECT * FROM `usuario` WHERE `usuario` = ?';
             let rows, fields;
             [rows, fields] = await connection.query(
                 queryStr,
-                [email],
+                [usuario],
             );
             if (rows.length > 0) {
                 if (checkPassword(password, rows[0].password)) {
@@ -37,7 +39,7 @@ class User {
     }
 
     static async getAll() {
-        let queryStr = 'SELECT * FROM `users`';
+        let queryStr = 'SELECT * FROM `usuario`';
         let rows, fields;
         [rows, fields] = await connection.query(
             queryStr,
@@ -47,7 +49,7 @@ class User {
     }
 
     static async find(id) {
-        let queryStr = 'SELECT * FROM `users` WHERE `id` = ?';
+        let queryStr = 'SELECT * FROM `usuario` WHERE `id` = ?';
         let rows, fields;
         [rows, fields] = await connection.query(
             queryStr,
@@ -63,7 +65,7 @@ class User {
         if (this.id == 0) {
             return false;
         } else {
-            let queryStr = 'DELETE FROM `users` WHERE `id` = ?';
+            let queryStr = 'DELETE FROM `usuario` WHERE `id` = ?';
             let result, fields;
             [result, fields] = await connection.query(
                 queryStr,
@@ -80,7 +82,7 @@ class User {
         if (this.id == 0) {
             return this.create();
         } else {
-            let queryStr = 'UPDATE `users` SET `email` = ?, `password` = ? WHERE `id` = ?';
+            let queryStr = 'UPDATE `usuario` SET `email` = ?, `password` = ? WHERE `id` = ?';
             let result, fields;
             [result, fields] = await connection.query(
                 queryStr,
@@ -92,22 +94,22 @@ class User {
     }
 
     async create() {
-        let queryStr = 'INSERT INTO `users` (`email`, `password`) VALUES (?,?)';
+        let queryStr = 'INSERT INTO `usuario` (`usuario`, `email`, `password`) VALUES (?,?,?)';
         let result, fields;
         [result, fields] = await connection.query(
             queryStr,
-            [this.email, this.password],
+            [this.usuario,this.email, this.password],
         );
         this.id = result.insertId;
         return this;
     }
 
     static async createStatic(user) {
-        let queryStr = 'INSERT INTO `users` (`email`, `password`) VALUES (?,?)';
+        let queryStr = 'INSERT INTO `usuario` (`email`, `password`) VALUES (?,?)';
         let result, fields;
         [result, fields] = await connection.query(
             queryStr,
-            [user.email, user.password],
+            [user.usuario,user.email, user.password],
         );
         user.id = result.insertId;
         return user;

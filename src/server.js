@@ -3,8 +3,12 @@ const cool = require('cool-ascii-faces');
 const path = require('path');
 const passport = require('passport');
 const PORT = process.env.PORT || 3000;
-
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const { flashMiddleware, flashHelpersMiddleware } = require('./middlewares/flash');
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 
@@ -22,8 +26,7 @@ showTimes = () => {
   return result;
 }
 
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
+
 app.use(cookieParser('secret'));
 app.use(session({
   cookie: { maxAge: 60000 },
@@ -40,11 +43,10 @@ app.use(express.json());
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-let flash = require('connect-flash');
-app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
-const { flashMiddleware, flashHelpersMiddleware } = require('./middlewares/flash');
+app.use(flash());
 app.use(flashMiddleware);
 app.use(flashHelpersMiddleware);
 

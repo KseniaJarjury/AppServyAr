@@ -13,9 +13,6 @@ let validateLogin = (data) => {
         email: [],
         password: [],
     };
-    if (data.password.length<8) {
-        errors.password.push('La contraseña debe tener 8 caracteres');
-    }
     for (let k of Object.keys(errors)) {
         if (errors[k].length==0) {
             delete errors[k];
@@ -40,20 +37,20 @@ router.post('/login', authGuestMiddleware, async (req, res) => {
     }
     let user = await classUser.checkLogin(formData)
     if (user) {
-        req.session.user = user.id;
-        res.redirect('/home');
+        req.session.user = user;
+        res.redirect('/');
     } else {
         req.flash('danger', 'Credenciales incorrectas');
         req.flash('oldData', {
             email: formData.email,
         })
-        res.redirect('/auth/login');
+        res.redirect('/login');
     }
 });
 
 router.get('/logout', authMiddleware, (req, res) => {
     req.session.destroy();
-    res.redirect('/home');
+    res.redirect('/');
 });
 
 router.get('/register', authGuestMiddleware, (req, res) => {

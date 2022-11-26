@@ -4,11 +4,17 @@ const router = express.Router();
 // const { authGuestMiddleware, authMiddleware } = require('../middlewares/auth');
 
 const modelServicio = require('../models/servicios');
+const { checkLogin } = require('../models/users');
 
 router.get('/', async (req, res) => {
     let servicios = await modelServicio.getAll();
+    let user;
+    if(req.session.user){
+        user  = req.session.user;
+    }
     res.render('index', {
-        categorias: servicios
+        categorias: servicios,
+        user: user
     });
 });
 

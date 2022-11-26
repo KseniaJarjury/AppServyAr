@@ -1,6 +1,6 @@
 
 create table usuario(
-	id_usuario int not null auto_increment,
+	id int not null auto_increment,
 	primary key (id_usuario) ,
 	usuario varchar(100) not null,
 	password varchar(100) not null,
