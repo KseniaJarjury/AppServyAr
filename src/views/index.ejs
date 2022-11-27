@@ -9,21 +9,22 @@
 <body>
     <header class="header" id="inicio">
       <% if(user != null) {%>
-      <div class="sign-out">
-        <a href="/logout"><img src="/images/img-svg/bx-exit.svg" alt="">Cerrar Sesion</a>
-        <label><% user.usuario %></label>
-      </div>
+          <div class="sign-out">
+            <a href="/logout"><img src="/images/img-svg/bx-exit.svg" alt="">Cerrar Sesion</a>
+            <label><% user.usuario %></label>
+          </div>
+      <%}else{%>
+            <div class="sign-out">
+              <a href="/login">Iniciar Sesión</a>
+            </div>
       <%}%>
       <img src="/images/img-svg/bx-menu.svg" alt="" class="principal">
       <%- include('incs/header') %>
       <nav class="menu-navegacion ">
         <a href="#inicio">Inicio</a>
-        <% if(user == null) {%>
-        <a href="/login">Iniciar Sesión</a>
-        <%}%>
         <a href="#categoria">Servicios</a>
         <a href="#testimonios">Clientes</a>
-        <a href="#contacto">contacto</a>
+        <a href="#contacto">Contacto</a>
       </nav>
       <div class="contenedor head">
         <h1 class="titulo">Encontra el servicio que necesitas</h1>

@@ -1,11 +1,12 @@
 const express = require('express');
 const User = require('../models/users');
 const router = express.Router();
+const modelServicio = require('../models/servicios');
 
 // const { authGuestMiddleware, authMiddleware } = require('../middlewares/auth');
-router.get('/', (req, res) => {
-  res.render('index');
-});
+// router.get('/', (req, res) => {
+//   res.render('index');
+// });
 
 router.get('/registro', (req, res) => {
     res.render('registro');
@@ -22,14 +23,33 @@ router.post('/registro', async (req, res) => {
     let user = new User(req.body);
     await user.create();
     req.flash('success', 'El usuario ha sido creado exitosamente');
-    res.redirect('/rol');  
     let message = 'Registro creado con id ' + user.id + ' se ha creado correctamente';      
-    res.render('registro', {
+    res.render('dashboard', {
           errors: {},
           oldData: {},
           message: message,
     });
   }
+});
+
+router.get('/', async (req, res) => {
+  let servicios = await modelServicio.getAll();
+  let user;
+  if(req.session.user){
+      user  = req.session.user;
+  }
+  res.render('index', {
+      categorias: servicios,
+      user: user
+  });
+});
+
+
+router.get('/categorias/:idServicio', async (req, res) => {
+  const servicio = await modelServicio.find(req.params.idServicio);
+  res.render('categoria', {
+      categoria: servicio,
+  });
 });
 
 

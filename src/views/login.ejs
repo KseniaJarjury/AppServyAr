@@ -11,6 +11,9 @@
 </head>
 
 <body>
+	<% if(messages.logged) { %>
+		<%= messages.logged %>
+	  <% } %>
 	<div class="logo">
 		<%- include('incs/header') %>
 
@@ -20,9 +23,10 @@
 		<form action="/login" method="POST" class="formulario">
 			<div class="login">
 				<h2>Iniciar Sesión</h2>
+				<%- include('mensajes.ejs') %>
 				<div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon google-login"
 					data-ga="[&quot;sign up&quot;,&quot;Sign Up Started - Google&quot;,&quot;New Post&quot;,null,null]">
-					<a href="/auth/google" class="button" class="btn btn-danger btn-block">
+					<a href="/auth/google" class="btn btn-danger btn-block">
 						<svg aria-hidden="true" class="native svg-icon iconGoogle" width="18" height="18"
 							viewBox="0 0 18 18">
 							<path

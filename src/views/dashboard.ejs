@@ -25,7 +25,9 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link " aria-current="page" href="#">NOTIFICACIONES</a>
+              <% if(user.rol == "oferente") {%>
               <a class="nav-link" href="/contratooferente">TRABAJOS REALIZADOS</a>
+              <%}%>
               <a class="nav-link" href="/rol">CAMBIAR ROL</a>
               <a class="nav-link" href="/editarperfil">CONFIGURACION</a>
             </div>
@@ -47,27 +49,41 @@
     <div class="perfil-usuario-header">
         <div class="perfil-usuario-portada">
             <div class="perfil-usuario-avatar">
-                <img src="/images/img-oferente/rick.png" alt="img-avatar">
-                <button type="button" class="boton-avatar">
+              <%if(user.foto){%>
+                <img src= <%= user.foto %> class="avatar img-circle img-thumbnail" alt="avatar">
+              <%}else if(user.urlFoto){%>
+                <img src= <%= user.urlFoto %> class="avatar img-circle img-thumbnail" alt="avatar">
+              <%}else{%>
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+              <%}%>     
+                <!-- <img src=<%= user.urlFoto %> alt="img-avatar"> -->
+                <!-- <button type="button" class="boton-avatar">
                     <i class="far fa-image"></i>
-                </button>
+                </button> -->
             </div>
             
         </div>
     </div>
     <div class="perfil-usuario-body">
         <div class="perfil-usuario-bio">
-            <h3 class="titulo">OFERENTE: user@user</h3>
+            <h3 class="titulo"><%= user.usuario %></h3>
+            <h4 class="titulo"><%= user.rol %></h4>
             <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="perfil-usuario-footer">
             <ul class="lista-datos">
+              <% if(user.rol == "oferente"){ %>
                 <li><i class="icono far fa-hammer"></i> Gasista, Albañil</li>
                 <li><i class="icono fad fa-star"></i> ⭐⭐⭐⭐</li>
+              <%}else{ %>
+                <li><i class="icono fas fa-phone-alt"></i> Telefono:</li>
+                <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion:</li>
+              <% }%>
             </ul>
         </div>     
     </div>
 </section>
+<%- include('mensajes.ejs') %>
 </body>
 </html>

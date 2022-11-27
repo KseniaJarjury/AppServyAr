@@ -1,19 +1,20 @@
 
 create table usuario(
 	id int not null auto_increment,
-	primary key (id_usuario) ,
+	primary key (id) ,
 	usuario varchar(100) not null,
 	password varchar(100) not null,
 	email varchar(100) not null,
-	tel varchar(20) not null,
-	ruta_foto varchar(500) not null,
+	tel varchar(20),
+	urlFoto varchar(500),
 	dni bigint not null,
-	apellido varchar(100) not null,
-	nombre varchar(100) not null,
-	calle varchar(100) not null,
+	apellido varchar(100),
+	nombre varchar(100),
+	calle varchar(100),
 	numeral_calle int,
 	cp int not null,
-	provincia varchar(100)not null
+	provincia varchar(100),
+	rol varchar(100)
 );
 
 
@@ -21,9 +22,9 @@ create table usuario(
 create table denuncia(
 	id_denuncia int not null auto_increment primary key,
     id_denunciante int not null,
-	foreign key (id_denunciante)  references usuario(id_usuario),
+	foreign key (id_denunciante)  references usuario(id),
     id_denunciado int not null,
-	foreign key (id_denunciado) references usuario(id_usuario),
+	foreign key (id_denunciado) references usuario(id),
 	descripcion varchar(500) not null
 );
 
@@ -33,9 +34,9 @@ create table denuncia(
 create table mensaje(
 	id_mensaje int not null auto_increment primary key,
 	id_origen int not null ,
-	foreign key (id_origen) references usuario(id_usuario),
+	foreign key (id_origen) references usuario(id),
 	id_destino int not null ,
-    foreign key (id_destino) references usuario(id_usuario),
+    foreign key (id_destino) references usuario(id),
 	descripcion varchar(1000) not null
 );
 
@@ -45,7 +46,7 @@ create table mensaje(
 create table oferente(
 	id_oferente int not null auto_increment primary key,
 	id_usuario_ofer int not null ,
-    foreign key(id_usuario_ofer)  references usuario(id_usuario),
+    foreign key(id_usuario_ofer)  references usuario(id),
 	tel_alter varchar(15) not  null
 );
 
@@ -54,7 +55,7 @@ create table oferente(
 create table cliente(
 	id_cliente int not null auto_increment primary key,
 	id_usuario_client int not null,
-    foreign key (id_usuario_client) references usuario(id_usuario)
+    foreign key (id_usuario_client) references usuario(id)
 );
 
 
@@ -145,14 +146,14 @@ insert into usuario(usuario, password,
 
 
 
-insert into oferente(id_usuario_ofer, tel_alter) values
+insert into oferente(id_ofer, tel_alter) values
 		(1,'5555-5555'),
 		(2,'9999-9999'),
 		(3,'4545-5454');
 
 
 
-insert into cliente(id_usuario_client) values
+insert into cliente(id_client) values
 		(4),
 		(5),
 		(6);

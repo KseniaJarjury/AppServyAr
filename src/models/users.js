@@ -16,7 +16,11 @@ class User {
         this.password = hashPassword(data?.password);
         this.usuario = data?.usuario;
         this.id = data?.id;
+        this.rol = data?.rol;
+        this.urlFoto = data?.urlFoto;
+        this.foto = data?.foto;
     }
+
 
     static async checkLogin(data) {
         let usuario = data.usuario;
@@ -94,26 +98,62 @@ class User {
     }
 
     async create() {
-        let queryStr = 'INSERT INTO `usuario` (`usuario`, `email`, `password`) VALUES (?,?,?)';
+        let queryStr = 'INSERT INTO `usuario` (`usuario`, `email`, `password`, `rol`) VALUES (?,?,?,?)';
         let result, fields;
         [result, fields] = await connection.query(
             queryStr,
-            [this.usuario,this.email, this.password],
+            [this.usuario,this.email, this.password,"cliente"],
         );
         this.id = result.insertId;
         return this;
     }
 
-    static async createStatic(user) {
-        let queryStr = 'INSERT INTO `usuario` (`email`, `password`) VALUES (?,?)';
+    static async createWithGoogle(user) {
+        let queryStr = 'INSERT INTO `usuario` (`usuario`,`email`, `password`, `urlFoto`, `rol`) VALUES (?,?,?,?,?)';
         let result, fields;
         [result, fields] = await connection.query(
             queryStr,
-            [user.usuario,user.email, user.password],
+            [user.usuario,user.email, user.password, user.urlFoto,"cliente"],
         );
         user.id = result.insertId;
         return user;
     }
+
+    static async findByEmail(email) {
+        let queryStr = 'SELECT * FROM `usuario` WHERE `Email` = ?';
+        let rows, fields;
+        [rows, fields] = await connection.query(
+            queryStr,
+            [email],
+        );
+        if (rows.length > 0) {
+            return new User(rows[0]);
+        }
+        return;
+    }
+
+    static async updateRol(rol,id){
+        let queryStr = 'UPDATE `usuario` SET `rol` = ? WHERE `id` = ?';
+        let result, fields;
+        [result, fields] = await connection.query(
+            queryStr,
+            [rol, id],
+        );
+        this.id = result.insertId;
+        return this;
+    }
+
+    static async saveImg(id,img){
+        let queryStr = 'UPDATE `usuario` SET `img` = ? WHERE `id` = ?';
+        let result, fields;
+        [result, fields] = await connection.query(
+            queryStr,
+            [img, id],
+        );
+        this.id = result.insertId;
+        return this;
+    }
+
 }
 
 module.exports = User;

@@ -56,18 +56,19 @@ const { authUserMiddleware } = require('./middlewares/auth');
 app.use(authUserMiddleware);
 
 // routes
-app.use('/', require('./routes/index'));
-app.use('/', require('./routes/auth'));
+app.use('/', require('./routes/public'));
+app.use('/', require('./routes/private'));
 // app.use('/', require('./routes/authentication'));
-app.use('/', require('./routes/registro'));
-app.use('/', require('./routes/cliente'));
-app.use('/', require('./routes/contrato'));
-app.use('/', require('./routes/rol'));
-app.use('/', require('./routes/oferente'));
-app.use('/', require('./routes/editarperfil'));
-app.use('/', require('./routes/contratooferente'));
-app.use('/', require('./routes/formcontratacion'));
-app.use('/', require('./routes/perfiloferente'));
+// app.use('/', require('./routes/public'));
+// app.use('/', require('./routes/cliente'));
+// app.use('/', require('./routes/contrato'));
+// app.use('/', require('./routes/rol'));
+// app.use('/', require('./routes/oferente'));
+// app.use('/', require('./routes/editarperfil'));
+// app.use('/', require('./routes/contratooferente'));
+// app.use('/', require('./routes/formcontratacion'));
+// app.use('/', require('./routes/perfiloferente'));
+// app.use('/', require('./routes/dashboard'));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
