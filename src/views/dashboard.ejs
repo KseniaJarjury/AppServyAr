@@ -52,16 +52,12 @@
         <div class="perfil-usuario-portada">
             <div class="perfil-usuario-avatar">
               <%if(user.foto){%>
-                <img src= <%= user.foto %> class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src= "<%= user.foto %>" class="avatar img-circle img-thumbnail" alt="avatar">
               <%}else if(user.urlFoto){%>
-                <img src= <%= user.urlFoto %> class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src= "<%= user.urlFoto %>" class="avatar img-circle img-thumbnail" alt="avatar">
               <%}else{%>
                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-              <%}%>     
-                <!-- <img src=<%= user.urlFoto %> alt="img-avatar"> -->
-                <!-- <button type="button" class="boton-avatar">
-                    <i class="far fa-image"></i>
-                </button> -->
+              <%}%>
             </div>
             
         </div>
