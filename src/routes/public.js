@@ -44,8 +44,14 @@ router.get('/', async (req, res) => {
   });
 });
 
+router.get('/categoria', async (req, res) => {
+  const servicio = await modelServicio.find(req.params.idServicio);
+  res.render('categoria', {
+    categoria: 0,
+});
+});
 
-router.get('/categorias/:idServicio', async (req, res) => {
+router.get('/categoria/:idServicio', async (req, res) => {
   const servicio = await modelServicio.find(req.params.idServicio);
   res.render('categoria', {
       categoria: servicio,

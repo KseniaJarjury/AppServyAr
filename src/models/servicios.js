@@ -34,6 +34,19 @@ class Servicio {
         return;
     }
 
+    static async findByProv(id,prov) {
+        let queryStr = 'SELECT u.* FROM `usuario u` JOIN `oferente o` ON `c.id_cliente` = `o.id_usuario_ofer` JOIN `oferente_servicio os` ON `o.id_oferente` = `os.id_oferente_o_s` WHERE `u.provincia` = ? AND `os.id_servicio_o_s` = ?';
+        let rows, fields;
+        [rows, fields] = await connection.query(
+            queryStr,
+            [prov,id],
+        );
+        if (rows.length > 0) {
+            return new Servicio(rows[0]);
+        }
+        return;
+    }
+
     async delete() {
         if (this.Id_servicio == 0) {
             return false;

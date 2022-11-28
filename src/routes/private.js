@@ -38,6 +38,7 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 
 
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
     // Redireccionando a dashboard si se autentico correctamente.
+    req.session.user = req.user;
     res.redirect('/dashboard');
 });
 let validateLogin = (data) => {
@@ -116,15 +117,15 @@ router.get('/perfiloferente', (req, res) => {
 router.get('/rol', (req, res) => {
     let nuevoRol;
     let user;
-    if(req.user.rol == "oferente"){
+    if(req.session.user.rol == "oferente"){
         nuevoRol = "cliente";
     }
     else{
         nuevoRol = "oferente";
     }
-    user = classUser.updateRol(nuevoRol,req.user.id);
-    req.user.rol = nuevoRol;
-    res.render('dashboard',{user: req.user})
+    user = classUser.updateRol(nuevoRol,req.session.user.id);
+    req.session.user.rol = nuevoRol;
+    res.render('dashboard',{user: req.session.user})
 });
 
 // router.get('/', async (req, res) => {
