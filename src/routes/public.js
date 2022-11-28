@@ -22,12 +22,14 @@ router.post('/registro', async (req, res) => {
   } else {
     let user = new User(req.body);
     await user.create();
+    req.session.user = user;
     req.flash('success', 'El usuario ha sido creado exitosamente');
     let message = 'Registro creado con id ' + user.id + ' se ha creado correctamente';      
     res.render('dashboard', {
           errors: {},
           oldData: {},
           message: message,
+          user: user
     });
   }
 });
