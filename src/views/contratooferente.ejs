@@ -25,31 +25,55 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Cliente</th>
-                        <th scope="col">Nro de Contacto</th>
-                        <th scope="col">Servicios</th>
                         <th scope="col">Fecha Inicio</th>
                         <th scope="col">Fecha Fin</th>
                         <th scope="col">Cotización</th>
-                        <th scope="col">Puntuación Obtenida</th>
+                        <th scope="col">Estado</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        
+                      <% for (let contrato of contratos) { %>
+                        <tr data-id="<%= contrato.Id_propuesta %>">
+                          <th scope="row">
+                            <%= contrato.Id_propuesta %>
+                          </th>
+                          <td>
+                            <%= contrato.Id_cliente_p %>
+                          </td>
+                          <td>
+                            <%= contrato.Fecha_inicio %>
+                          </td>
+                          <td>
+                            <%= contrato.Fecha_fin %>
+                          </td>
+                          <td>
+                            <%= contrato.Monto_a_abonar %>
+                          </td>
+                          <td>
+                            <%= contrato.Estado %>
+                          </td>
+
+                          <td class="d-flex">
+                            <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"> <a href="/formcontratacion/formcontratacion">  Enviar contrato </a></button>
+                            <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Denunciar usuario</button>
+                          </td> 
+                      <!-- <tr> 
                         <th scope="row">1</th>
-                        <td>Nombre cliente</td>
+                        <td>Nombre</td>
                         <td>1121212143</td>
                         <td>Gasista</td>
                         <td>07/10/2022</td>
-                        <td>27/10/2022</td>
+                        <td id="fechaFin">27/11/2022</td>
                         <td>$25000</td>
-                        <td><p>⭐⭐⭐⭐⭐</p></td>
+                        <td>Aceptado</td>
+                      </tr> -->
+                      <% } %>
                       </tr>
                     </tbody>
                   </table>
               
-               <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"> <a href="/formcontratacion">  Enviar contrato </a></button>
-               <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Denunciar usuario</button>
-               
 
                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">

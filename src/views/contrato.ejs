@@ -20,21 +20,68 @@
              <h2>CONTRATO</h2>
              <div class="contrato-items">
                <form action="/contrato" id="myform" method="post">
+                
                 <table class="table">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Profesional</th>
-                        <th scope="col">Nro de Contacto</th>
-                        <th scope="col">Servicios</th>
+                        <th scope="col">Oferente</th>
                         <th scope="col">Fecha Inicio</th>
                         <th scope="col">Fecha Fin</th>
                         <th scope="col">Cotización</th>
-                        <th scope="col">Estado</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+
+                      <% for (let contrato of contratos) { %>
+                        <tr data-id="<%= contrato.Id_propuesta %>">
+                          <th scope="row">
+                            <%= contrato.Id_propuesta %>
+                          </th>
+                          <td>
+                            <%= contrato.Id_oferente_p %>
+                          </td>
+                          <td>
+                            <%= contrato.Fecha_inicio %>
+                          </td>
+                          <td>
+                            <%= contrato.Fecha_fin %>
+                          </td>
+                          <td>
+                            <%= contrato.Monto_a_abonar %>
+                          </td>
+                          
+                          <td class="d-flex">
+                           
+                              <!-- <input type="hidden" name="_method" value="delete"> -->
+                             
+                              <!-- <form class="form-inline form-modal-confirmation"
+                              action="/contrato/<%= contrato.Id_propuesta %>/save" method="post"
+                              data-id="<%= contrato.Id_propuesta %>">
+                              <button type="button"
+                                class="btn btn-primary"
+                                data-id="<%= contrato.Id_propuesta %>">
+                                 Aceptar
+                              </button>
+                              </form> -->
+                              
+                            <button type="button" class="btn btn-primary" value="RECHAZAR">ACEPTAR</button>
+                            <button type="button" class="btn btn-primary" value="RECHAZAR">RECHAZAR</button>
+                            <button type="button" class="btn btn-primary" value="CANCELAR">CANCELAR</button>
+                            <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" id="puntuacion">Dejar puntuación</button>
+                            <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Denunciar usuario</button>
+                                  
+                                      
+                            
+                          </td>
+
+                       
+                    
+                    
+                      
+                      
+                      <!-- <tr> 
                         <th scope="row">1</th>
                         <td>Nombre</td>
                         <td>1121212143</td>
@@ -43,18 +90,14 @@
                         <td id="fechaFin">27/11/2022</td>
                         <td>$25000</td>
                         <td>Aceptado</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                <input type="hidden" value="test" name="test1">
-                <input type="text" value="" name="test2">
-
-               <input type="submit" class="submit" value="ACEPTAR">
-               <input type="submit" class="submit" value="RECHAZAR">
-               <input type="submit" class="submit" value="CANCELAR">
-               <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" id="puntuacion" disabled>Dejar puntuación</button>
-               <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Denunciar usuario</button>
+                      </tr> -->
+                      <% } %>
+                      </tbody>
+                      
                
+                  </table> 
+                
+
                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                  <div class="modal-dialog">
                    <div class="modal-content">
@@ -123,6 +166,8 @@
               </div>
 
               </form>
+
+
              </div>
            </div>
          </div>
