@@ -19,62 +19,80 @@
 
             <div class="cont-category">
               <div class="contenedor-categoria">
+                <a href="/categoria/1">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/abogado.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Abogado</h6>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/2">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/albañil.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Albañil</h6>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/3">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/Architect.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Arquitecto</h6>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/4">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/belleza.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Belleza</h6>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/5">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/bienestar.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Bienestar</h6>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/6">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/carpintero.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Carpintero</h6>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/7">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/cocinero.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Cocinero/a</h>
+                </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/8">
                 <div class="cont-galeria">
                   <img src="/images/img-svg/cuidador.svg" alt="" class="img-categoria">
                 </div>
                 <h6 class="n-service">Cuidador de mascota</h6>
+              </a>
               </div>
               <div class="contenedor-categoria">
+                <a href="/categoria/9">
                 <div class="cont-galeria">
-                  <img src="/images/img-svg/electricista.svg" alt="" class="img-categoria">
-                </div> 
-                <h6 class="n-service">Electricista</h6>
+                    <img src="/images/img-svg/electricista.svg" alt="" class="img-categoria">
+                  </div> 
+                  <h6 class="n-service">Electricista</h6>
+                </a>
               </div>
         </section>
       <section class="busqueda">
-          <br><h3 class="subtitulo">Estas buscando <%- categoria.Tipo %>:</h3><br>
+          <br><h3 class="subtitulo">Estas buscando <%= categoria.tipo %>:</h3><br>
           <div class="content-busqueda">
               <div class="filtro">
                 <p class="p-filtro">Agregar filtro:</p>
@@ -90,7 +108,7 @@
       </section>
       <br>
       <section class="oferente">
-        <br><h3 class="subtitulo"><%- categoria.nombre %> de confianza</h3><br>
+        <br><h3 class="subtitulo"><%- categoria.tipo %> de confianza</h3><br>
         <section class="opinion">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
               <div class="carousel-indicators">

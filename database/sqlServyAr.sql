@@ -126,7 +126,7 @@ create table propuesta_estado(
 	idPropuestaE int not null ,
     foreign key (idPropuestaE) references propuesta(id_propuesta),
 	id_estado_p_e int not null ,
-    foreign key (idPropuestaE) references estado(id_estado),
+    foreign key (id_estado_p_e) references estado(id_estado),
 	fecha date not null,
 	primary key(idPropuestaE, id_estado_p_e)
 );
@@ -135,7 +135,7 @@ create table propuesta_estado(
 /**DML**/
 
 insert into usuario(usuario, password, 
-					email, tel, ruta_foto, dni, apellido, nombre, calle, numeral_calle, cp, provincia) 
+					email, tel, urlfoto, dni, apellido, nombre, calle, numeral_calle, cp, provincia) 
 					values
 					('user@1', 'admin1234', 'usuario1@gmail.com', '4245-6589', 'C:TPLAB2022FOTOSuser1.jpg', 10010010, 'Perez', 'Juan', 'LNAlem', 2560, 1890, 'Buenos Aires'),
 					('user@2', 'admin1234', 'usuario2@gmail.com', '4780-0089', 'C:TPLAB2022FOTOSuser2.jpg', 20020002, 'Martinez', 'Jose', 'Azcuenaga', 1002, 1550, 'Caba'),
@@ -146,17 +146,17 @@ insert into usuario(usuario, password,
 
 
 
-insert into oferente(id_ofer, tel_alter) values
-		(1,'5555-5555'),
-		(2,'9999-9999'),
-		(3,'4545-5454');
+insert into oferente(id_oferente, tel_alter,id_usuario_ofer) values
+		(1,'5555-5555',1),
+		(2,'9999-9999',2),
+		(3,'4545-5454',3);
 
 
 
-insert into cliente(id_client) values
-		(4),
-		(5),
-		(6);
+insert into cliente(id_cliente,id_usuario_client) values
+		(4,4),
+		(5,5),
+		(6,6);
 
 
 
@@ -194,9 +194,9 @@ insert into catalogo_detalle(id_cabecera_det, id_tipo_serv, descripcion ) values
 
 
 insert into propuesta(id_oferente_p, id_cliente_p, fecha_inicio, fecha_fin, monto_a_abonar) values
-					 (1, 1, '2022-05-12', '2022-07-07', 16456),
-					 (2, 1, '2022-05-12', '2022-06-30', 15000),
-					 (3, 2, '2022-08-08', '2023-01-19', 150000);
+					 (1, 4, '2022-05-12', '2022-07-07', 16456),
+					 (2, 4, '2022-05-12', '2022-06-30', 15000),
+					 (3, 6, '2022-08-08', '2023-01-19', 150000);
 
 
 

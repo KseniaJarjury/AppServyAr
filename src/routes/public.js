@@ -22,12 +22,14 @@ router.post('/registro', async (req, res) => {
   } else {
     let user = new User(req.body);
     await user.create();
+    req.session.user = user;
     req.flash('success', 'El usuario ha sido creado exitosamente');
     let message = 'Registro creado con id ' + user.id + ' se ha creado correctamente';      
     res.render('dashboard', {
           errors: {},
           oldData: {},
           message: message,
+          user: user
     });
   }
 });
@@ -44,8 +46,14 @@ router.get('/', async (req, res) => {
   });
 });
 
+router.get('/categoria', async (req, res) => {
+  const servicio = await modelServicio.find(req.params.idServicio);
+  res.render('categoria', {
+    categoria: 0,
+});
+});
 
-router.get('/categorias/:idServicio', async (req, res) => {
+router.get('/categoria/:idServicio', async (req, res) => {
   const servicio = await modelServicio.find(req.params.idServicio);
   res.render('categoria', {
       categoria: servicio,
