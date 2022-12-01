@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const classUser = require('../models/users');
 const { authGuestMiddleware, authMiddleware } = require('../middlewares/auth');
+const catalogo = require('./../models/catalogo');
 
 passport.use(new GoogleStrategy({
     clientID:     process.env.GOOGLE_CLIENT_ID,
@@ -215,7 +216,13 @@ router.get('/contrato/:Id_propuesta', async (req, res) => {
 
 //////////////FIN CONTRATO
 
-
+router.get('/catalogo', (req, res) => {
+    // let catalogos = await catalogo.save();
+    res.render('catalogo')
+});
+router.post('/catalogo',  async (req, res) => {
+    
+});
 
 
 module.exports = router;

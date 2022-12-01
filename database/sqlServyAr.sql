@@ -56,8 +56,14 @@ create table oferente(
 	id_oferente int not null auto_increment primary key,
 	id_usuario_ofer int not null ,
     foreign key(id_usuario_ofer)  references usuario(id),
-	direccion varchar(255) NOT NULL,
 	tel_alter varchar(15) not  null
+);
+
+create table oferenteubicacion(
+	idOferente int not null primary key,
+	foreign key(idOferente)  references oferente(id_oferente),
+	idLocalidad int(11) not null ,
+    foreign key(idLocalidad)  references localidad(idLocalidad)
 );
 
 
@@ -148,10 +154,10 @@ insert into usuario(usuario, password, email, tel, urlfoto, dni, apellido, nombr
 
 
 
-insert into oferente(id_oferente, id_usuario_ofer, tel_alter, direccion) values
-		(1,1,'5555-5555', 'Catro Chavez 277'),
-		(2,2,'9999-9999', 'Fernando de Toro 300'),
-		(3,3,'4545-5454', 'Dorrego 200');
+insert into oferente(id_oferente, id_usuario_ofer, tel_alter) values
+		(1,1,'5555-5555'),
+		(2,2,'9999-9999'),
+		(3,3,'4545-5454');
 
 
 
