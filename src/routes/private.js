@@ -93,10 +93,10 @@ router.get('/dashboard', (req, res) => {
     })
 });
 
-router.get('/contratooferente', (req, res) => {
-    res.render('contratooferente')
+//router.get('/contratooferente', (req, res) => {
+//     res.render('contratooferente')
 
-});
+// });
 
 router.get('/editarperfil', (req, res) => {
     let user = req.user?req.user:req.session.user;
@@ -162,7 +162,7 @@ router.get('/rol', (req, res) => {
 
 const modelContrato = require('../models/contrato');
 
-router.get('/', async (req, res) => {
+router.get('/contrato', async (req, res) => {
      let propuesta = await modelContrato.getAll();
     // let contratos = {
     //     "Id_contrato": 1,
@@ -184,15 +184,15 @@ router.get('/contrato/:Id_propuesta', async (req, res) => {
 
 
 
-router.post('', async (req, res) => {
-    console.log(req.body);
-    res.send('generando contrato');
-});
+// router.post('', async (req, res) => {
+//     console.log(req.body);
+//     res.send('generando contrato');
+// });
 
 
 ///CONT. OFERENTE
 
-router.get('/', async (req, res) => {
+router.get('/contratooferente', async (req, res) => {
     let propuesta = await modelContrato.getAll();
    // let contratos = {
    //     "Id_contrato": 1,

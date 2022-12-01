@@ -3,41 +3,44 @@ const connection = require('../config/db')
 
 class Contrato {
     constructor(data) {
-        this.Id_propuesta = data.Id_propuesta;
+        this.id_propuesta = data.id_propuesta;
+        this.id_estado = data.id_estado;
         this.fill(data);
     }
 
     fill(data) {
-        this.Id_oferente_p = data?.Id_oferente_p;
+        this.id_oferente_p = data?.id_oferente_p;
     }
 
     fill(data) {
-        this.Id_cliente_p = data?.Id_cliente_p;
+        this.id_cliente_p = data?.id_cliente_p;
     }
 
     fill(data) {
-        this.Fecha_inicio = data?.Fecha_inicio;
+        this.fecha_inicio = data?.fecha_inicio;
 
     }
 
     fill(data) {
         
-        this.Fecha_fin = data?.Fecha_fin;
+        this.fecha_fin = data?.fecha_fin;
         
     }
 
     fill(data) {
-        this.Monto_a_abonar = data?.Monto_a_abonar;
+        this.monto_a_abonar = data?.monto_a_abonar;
     }
 
+    
+
     fill(data) {
-        this.Estado = data?.Estado;
+        this.tipo = data?.tipo;
     }
 
 
     static async getAll() {
-        let queryStr = 'SELECT * FROM `propuesta`';
-        let rows, fields;
+        let queryStr = 'SELECT *  FROM `propuesta` LEFT JOIN `propuesta_estado` ON propuesta.id_propuesta = propuesta_estado.idPropuestaE LEFT JOIN `estado` ON propuesta_estado.idPropuestaE = estado.id_estado'
+                let rows, fields;
         [rows, fields] = await connection.query(
             queryStr,
             [],
