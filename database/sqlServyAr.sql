@@ -110,7 +110,8 @@ create table propuesta(
     foreign key (id_cliente_p) references cliente(id_cliente),
 	fecha_inicio date not null,
 	fecha_fin date not null,
-	monto_a_abonar double not null
+	monto_a_abonar double not null,
+    estado_tipo varchar(100) not null
 );
 
 
@@ -193,10 +194,10 @@ insert into catalogo_detalle(id_cabecera_det, id_tipo_serv, descripcion ) values
 
 
 
-insert into propuesta(id_oferente_p, id_cliente_p, fecha_inicio, fecha_fin, monto_a_abonar) values
-					 (1, 4, '2022-05-12', '2022-07-07', 16456),
-					 (2, 4, '2022-05-12', '2022-06-30', 15000),
-					 (3, 6, '2022-08-08', '2023-01-19', 150000);
+insert into propuesta(id_oferente_p, id_cliente_p, fecha_inicio, fecha_fin, monto_a_abonar, estado_tipo) values
+					 (1, 4, '2022-05-12', '2022-07-07', 16456, 'Rechazado'),
+					 (2, 4, '2022-05-12', '2022-06-30', 15000, 'Aceptado'),
+					 (3, 6, '2022-08-08', '2023-01-19', 150000, 'Cancelado');
 
 
 

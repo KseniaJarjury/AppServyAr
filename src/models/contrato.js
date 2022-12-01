@@ -34,7 +34,7 @@ class Contrato {
     
 
     fill(data) {
-        this.tipo = data?.tipo;
+        this.estado_tipo = data?.estado_tipo;
     }
 
 
