@@ -15,7 +15,7 @@
 		<%= messages.logged %>
 	  <% } %>
 	<div class="logo">
-		<%- include('incs/header') %>
+		<%- include('incs/logo') %>
 
 	</div>
 
@@ -23,7 +23,7 @@
 		<form action="/login" method="POST" class="formulario">
 			<div class="login">
 				<h2>Iniciar Sesión</h2>
-				<%- include('mensajes.ejs') %>
+				<%- include('incs/mensajes') %>
 				<div class="flex--item s-btn s-btn__muted s-btn__outlined s-btn__icon google-login"
 					data-ga="[&quot;sign up&quot;,&quot;Sign Up Started - Google&quot;,&quot;New Post&quot;,null,null]">
 					<a href="/auth/google" class="btn btn-danger btn-block">

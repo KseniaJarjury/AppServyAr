@@ -1,12 +1,10 @@
 const express = require('express');
-const cool = require('cool-ascii-faces');
 const path = require('path');
 const passport = require('passport');
 const PORT = process.env.PORT || 3000;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-const { flashMiddleware, flashHelpersMiddleware } = require('./middlewares/flash');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -43,32 +41,26 @@ app.use(express.json());
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-
+// passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+// middlewares
+const {authUserMiddleware} = require('./middlewares/auth');
+app.use(authUserMiddleware);
+
 app.use(flash());
+const { flashMiddleware, flashHelpersMiddleware } = require('./middlewares/flash');
 app.use(flashMiddleware);
 app.use(flashHelpersMiddleware);
 
 // public files
 app.use(express.static(path.join(__dirname, './public')));
-const { authUserMiddleware } = require('./middlewares/auth');
-app.use(authUserMiddleware);
 
 // routes
 app.use('/', require('./routes/public'));
 app.use('/', require('./routes/private'));
-// app.use('/', require('./routes/authentication'));
-// app.use('/', require('./routes/public'));
-// app.use('/', require('./routes/cliente'));
-// app.use('/', require('./routes/contrato'));
-// app.use('/', require('./routes/rol'));
-// app.use('/', require('./routes/oferente'));
-// app.use('/', require('./routes/editarperfil'));
-// app.use('/', require('./routes/contratooferente'));
-// app.use('/', require('./routes/formcontratacion'));
-// app.use('/', require('./routes/perfiloferente'));
-// app.use('/', require('./routes/dashboard'));
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

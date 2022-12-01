@@ -7,7 +7,7 @@
     <script src="/js/appCATEGORIA.js" defer></script>
 </head>
 <body>
-  <%- include('incs/header') %>
+  <%- include('incs/logo') %>
         
     <header class="header" id="inicio">
         <div class="contenedor head">
@@ -96,12 +96,24 @@
           <div class="content-busqueda">
               <div class="filtro">
                 <p class="p-filtro">Agregar filtro:</p>
-                <label for="provincia1" class="form-label">Provincia:</label>
-                <input type="text" class="form-control" id="provincia1" placeholder="Buenos Aires">
-                <label for="localidad" class="form-label">Localidad:</label>
-                <input type="text" class="form-control" id="localidad" placeholder="Esteban Echeverria">
-                <br>
-                <button type="button" class="btn btn-danger"><img src="/images/img-categoria/bx-plus.svg" alt=""> Agregar</button>
+                <form action="" class="mb-3" method="get" id="buscarFiltro">
+                  <div class="col-12 col-md-6">
+                    <label for="provincia" class="form-label">Provincia:</label>
+                    <select class="form-select" aria-label="Provincia" name="provincia" id="provincia" value="<%= parametrosBusqueda?.provincia || '' %>">
+                      <option value="">Seleccionar</option>
+                      <% provincias.forEach(element => { %>
+                      <option <%= parametrosBusqueda?.provincia == element.IdProvincia ? "selected" : '' %> value="<%=element.IdProvincia %>"><%=element.Descripcion %></option>
+                      <% });  %>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="localidad" class="form-label" aria-placehold>Localidad</label>
+                    <select class="form-select" aria-label="Localidad" name="localidad" id="localidad" value="<%= parametrosBusqueda?.localidad || '' %>">
+                      <option value="<%- parametrosBusqueda?.localidad || '' %>">Seleccione...</option>
+                    </select>
+                  </div>
+                  <button type="button" class="btn btn-danger"><img src="/images/img-categoria/bx-plus.svg" alt=""> Agregar</button>
+                </form>
               </div>
           </div>
           <br><br>

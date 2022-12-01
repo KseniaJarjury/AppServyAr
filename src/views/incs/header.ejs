@@ -1,1 +1,10 @@
-<a href="/"> <img src="/images/img-app/logo.png" alt="logo" id="logo"></a>
+<% if(logued) {%>
+    <div class="sign-out">
+      <a href="/logout"><img src="/images/img-svg/bx-exit.svg" alt="">Cerrar Sesion</a>
+      <label><% user.usuario %></label>
+    </div>
+<%}else{%>
+      <div class="sign-out">
+        <a href="/login">Iniciar Sesión</a>
+      </div>
+<%}%>
