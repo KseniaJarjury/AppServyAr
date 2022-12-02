@@ -1,7 +1,7 @@
 const connection = require('../config/db')
 
 
-class Contrato {
+class FormContrato {
     constructor(data) {
         this.id_propuesta = data.id_propuesta;
         this.id_estado = data.id_estado;
@@ -138,16 +138,7 @@ class Contrato {
         return this;
     }
 
-    // static async createStatic(user) {
-    //     let queryStr = 'INSERT INTO `servicio` (`email`, `password`) VALUES (?,?)';
-    //     let result, fields;
-    //     [result, fields] = await connection.query(
-    //         queryStr,
-    //         [user.email, user.password],
-    //     );
-    //     user.id = result.insertId;
-    //     return user;
-    // }
+    
 }
 
-module.exports = Contrato;
+module.exports = FormContrato;

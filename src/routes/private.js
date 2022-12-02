@@ -140,9 +140,14 @@ router.get('/rol', (req, res) => {
 //     })
 // });
 
-// router.post('', async (req, res) => {
+router.post('/', async (req, res) => {
+    console.log(req.body);
+    res.send('generando contrato');
+});
+
+// router.post('/contrato/:estado_Cancel', async (req, res) => {
 //     console.log(req.body);
-//     res.send('generando contrato');
+//     res.send('CONTRATO ACEPTADO');
 // });
 
 // router.get('/oferente', (req, res) => {
@@ -184,10 +189,6 @@ router.get('/contrato/:Id_propuesta', async (req, res) => {
 
 
 
-// router.post('', async (req, res) => {
-//     console.log(req.body);
-//     res.send('generando contrato');
-// });
 
 
 ///CONT. OFERENTE
